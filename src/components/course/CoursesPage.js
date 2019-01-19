@@ -4,6 +4,7 @@ import * as courseActions from '../../actions/courseActions';
 import {bindActionCreators} from 'redux';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
+import toastr from 'toastr';
 
 class CoursePage extends React.Component {
     constructor(props, context) {
@@ -13,17 +14,17 @@ class CoursePage extends React.Component {
         this.deleteCourse = this.deleteCourse.bind(this);
     }
 
-    courseRow(course, index) {
-        return  <div key={index}>{course.title}</div>;
-    }
-
     redirectToAddToCoursePage() {
         browserHistory.push('/course');
     }
 
     deleteCourse(course) {
         event.preventDefault();
-        this.props.actions.deleteCourse(course);
+        this.props.actions.deleteCourse(course).then(
+            () => toastr.success(`Course ${course.title} deleted`)
+        ).catch(error => {
+            toastr.error(error);
+        });
     }
 
     render() {
