@@ -27,7 +27,7 @@ SelectInput.propTypes = {
     onChange: PropTypes.func.isRequired,
     defaultOption: PropTypes.string,
     value: PropTypes.string,
-    error: PropTypes.string.Required,
+    error: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.object)
 };
 
