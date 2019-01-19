@@ -7,8 +7,10 @@ import {browserHistory} from 'react-router';
 
 class CoursePage extends React.Component {
     constructor(props, context) {
-        super();
+        super(props,context);
+
         this.redirectToAddToCoursePage = this.redirectToAddToCoursePage.bind(this);
+        this.deleteCourse = this.deleteCourse.bind(this);
     }
 
     courseRow(course, index) {
@@ -17,6 +19,11 @@ class CoursePage extends React.Component {
 
     redirectToAddToCoursePage() {
         browserHistory.push('/course');
+    }
+
+    deleteCourse(course) {
+        event.preventDefault();
+        this.props.actions.deleteCourse(course);
     }
 
     render() {
@@ -30,7 +37,7 @@ class CoursePage extends React.Component {
                     value="Add Course"
                     className="btn btn-primary"
                     onClick={this.redirectToAddToCoursePage} />
-                <CourseList courses={courses} />
+                <CourseList courses={courses} onCourseDelete={this.deleteCourse} />
             </div>
         );
     }
