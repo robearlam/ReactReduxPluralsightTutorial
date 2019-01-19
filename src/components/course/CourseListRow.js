@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const CourseListRow = ({course, onDelete}) => {
+const CourseListRow = ({course, onDelete}) => {   
+    const passDeleteCouse = e => (onDelete(course));
     return (
         <tr>
             <td><a href={course.watchHref} target="_blank">Watch</a></td>
@@ -10,7 +11,7 @@ const CourseListRow = ({course, onDelete}) => {
             <td>{course.category}</td>
             <td>{course.length}</td>
             <td>
-                <input type="button" value="Delete" onClick={() => onDelete(course)} />
+                <input type="button" value="Delete" onClick={passDeleteCouse} />
             </td>
         </tr>
     );
