@@ -1,7 +1,7 @@
 import expect from 'expect';
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import TestUtils from 'react-addons-test-utils'
+import TestUtils from 'react-addons-test-utils';
 import CourseForm from './CourseForm';
 
 function setup(saving) {
@@ -30,4 +30,4 @@ describe('CourseForm via Enzyme', () => {
         const wrapper = setup(true);
         expect(wrapper.find('input').props().value).toBe('Saving...');
     });
-})
+});
