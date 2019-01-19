@@ -9,6 +9,8 @@ export default function authorReducer(state = initialState.authors, action) {
             return [
                 ...state.filter(author => author.id !== action.author.id)
             ];
+        case types.DELETE_AUTHOR_FAILED:
+            return state;
         default:
             return state;
     }
